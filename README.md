@@ -78,7 +78,7 @@ Kebab case: handling-units
 Upper kebab case: Handling-Units
 ```
 
-# Contributions
+# Thank you
 
 https://github.com/dwyl/english-words
 
