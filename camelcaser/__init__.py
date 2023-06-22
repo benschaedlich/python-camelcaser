@@ -15,17 +15,19 @@ def process_word(string, words_db):
     best_match = max(matches, key=lambda word: len(word))
     return best_match
 
+
 def normalize_string(string):
     string = string.replace(" ", "")
     string = string.strip()
     string = string.lower()
     return string
 
-def format_string(words_list, mode):
 
+def format_string(words_list, mode):
     if mode == "camel_case":
         camel_case = ''.join(word.capitalize() for word in words_list)
         return camel_case
+    
     elif (mode == "lower_camel_case"):
         camel_case = ''.join(word.capitalize() for word in words_list)
         return camel_case[0].lower() + camel_case[1:]
@@ -47,7 +49,7 @@ def format_string(words_list, mode):
         return kebab_case
 
     else:
-        Exception("Unknown mode.")
+        raise Exception("Unknown mode.")
 
 
 def make_notation(string, max_iteration=30, mode="camel_case"):
@@ -56,12 +58,14 @@ def make_notation(string, max_iteration=30, mode="camel_case"):
 
     i = 0
     words = []
-    while (not len(string) == 0) or (i == 50):
+    while (not len(string) == 0) or (i == max_iteration):
         word = process_word(string, words_db)
         string = string.replace(word, "")
         words.append(word)
         i+=1
 
+    if i == 50:
+        raise Exception("Max iterations exceeded")
     return format_string(words, mode.lower())
 
 
