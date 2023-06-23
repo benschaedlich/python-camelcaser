@@ -1,13 +1,24 @@
 """
 --------------------------------------
 Build documentation
+https://dzone.com/articles/executable-package-pip-install
 ---------------------------------------
 pip3.9 install tqdm
+pip3.9 install twine
 pip3.9 install setuptools
 pip3.9 install wheel
 pip3.9 install bdist_wheel
 
 python3.9 setup.py bdist_wheel
+
+~/.pypirc
+[distutils] 
+index-servers=pypi
+[pypi] 
+repository = https://upload.pypi.org/legacy/ 
+username =benschaedlich
+
+
 """
 
 
@@ -20,7 +31,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='python-camelcaser',
-    version='0.1.0b',
+    version='1.0.0',
     packages=setuptools.find_packages(),
     package_data={'camelcaser': ['*.txt', 'word_lists/*.txt']},
     include_package_data=True,
