@@ -10,73 +10,116 @@ Python-CamelCaser is a Python package that provides functionality for finding re
 
 
 # Modes
-| Case            | Example Input    | Output         |
-|-----------------|-----------------|----------------|
-| Camel case      | handlingunits   | HandlingUnits  |
-| Lower camel case| handlingunits   | handlingUnits  |
-| Snake case      | handlingunits   | handling_units |
-| Upper snake case| handlingunits   | Handling_Units |
-| Kebab case      | handlingunits   | handling-units |
-| Upper kebab case| handlingunits   | Handling-Units |
+| Mode               | Input                 | Output                |
+|--------------------|-----------------------|-----------------------|
+| camel_case         | verylongtestexample   | VeryLongTestExample   |
+| lower_camel_case   | verylongtestexample   | veryLongTestExample   |
+| snake_case         | verylongtestexample   | very_long_test_example |
+| upper_snake_case   | verylongtestexample   | Very_Long_Test_Example |
+| kebab_case         | verylongtestexample   | very-long-test-example |
+| upper_kebab_case   | verylongtestexample   | Very-Long-Test-Example |
+
 
 
 ## Usage
 
-### Example
+### Import
 ```python
 import camelcaser as cc
+```
 
-input = "handlingunits"
+### Usage with real world words without separators
+```python
+input_word = "verylongtestexample"
 
-
-
-# Camel Case
-# -------------------------------------------------#
-camel_case = cc.make_camel_case(input)
+# Camel case
+camel_case = cc.make_camel_case(input_word)
 print(f"Camel case: {camel_case}")
 
+# Snake case
+snake_case = cc.make_snake_case(input_word)
+print(f"Snake case: {snake_case}")
+```
 
-# Lower Camel Case
-# -------------------------------------------------#
-lower_camel_case = cc.make_lower_camel_case(input)
-print(f"Lower camel case: {lower_camel_case}")
+### Usage with separators
+```python
+input_word =  "very_long_test_example"
 
+# Camel Case
+camel_case = cc.make_camel_case(input_word)
 
 # Snake Case
-# -------------------------------------------------#
-snake_case = cc.make_snake_case(input)
-print(f"Snake case: {snake_case}")
-
-
-# Upper Snake Case
-# -------------------------------------------------#
-upper_snake_case = cc.make_upper_snake_case(input)
-print(f"Upper snake case: {upper_snake_case}")
-
-
-# Kebab Case
-# -------------------------------------------------#
-kebab_case = cc.make_kebab_case(input)
-print(f"Kebab case: {kebab_case}")
-
-
-# Upper Kebab Case
-# -------------------------------------------------#
-upper_kebab_case = cc.make_upper_kebab_case(input)
-print(f"Upper kebab case: {upper_kebab_case}")
-
+snake_case = cc.make_snake_case(input_word)
 ```
 
-### Output 
+### Usage with custom separator [;]
+```python
+input_word = "Very;Long;Test;Example"
 
+# Camel Case
+camel_case = cc.make_camel_case(input_word, separator=separator)
+
+# Snake Case
+snake_case = cc.make_snake_case(input_word, separator=separator)
 ```
-Camel case: HandlingUnits
-Lower camel case: handlingUnits
-Snake case: handling_units
-Upper snake case: Handling_Units
-Kebab case: handling-units
-Upper kebab case: Handling-Units
-```
+
+
+
+## Examples
+
+### Examples with real world words without separators
+| Mode             | Input                  | Output                 |
+|------------------|------------------------|------------------------|
+| camel_case       | verylongtestexample     | VeryLongTestExample    |
+| lower_camel_case | verylongtestexample     | veryLongTestExample    |
+| snake_case       | verylongtestexample     | very_long_test_example |
+| upper_snake_case | verylongtestexample     | Very_Long_Test_Example |
+| kebab_case       | verylongtestexample     | very-long-test-example |
+| upper_kebab_case | verylongtestexample     | Very-Long-Test-Example |
+
+
+### Examples with separators
+| Mode             | Input                  | Output                 |
+|------------------|------------------------|------------------------|
+| camel_case       | very_long_test_example | VeryLongTestExample    |
+| lower_camel_case | very_long_test_example | veryLongTestExample    |
+| lower_snake_case | very_long_test_example | very_long_test_example |
+| upper_snake_case | very_long_test_example | Very_Long_Test_Example |
+| kebab_case       | very_long_test_example | very-long-test-example |
+| upper_kebab_case | very_long_test_example | Very-Long-Test-Example |
+| camel_case       | very-long-test-example  | VeryLongTestExample    |
+| lower_camel_case | very-long-test-example  | veryLongTestExample    |
+| lower_snake_case | very-long-test-example  | very_long_test_example |
+| upper_snake_case | very-long-test-example  | Very_Long_Test_Example |
+| kebab_case       | very-long-test-example  | very-long-test-example |
+| upper_kebab_case | very-long-test-example  | Very-Long-Test-Example |
+| camel_case       | VeryLongTestExample     | Verylongtestexample    |
+| lower_camel_case | VeryLongTestExample     | verylongtestexample    |
+| lower_snake_case | VeryLongTestExample     | Verylongtestexample    |
+| upper_snake_case | VeryLongTestExample     | Verylongtestexample    |
+| kebab_case       | VeryLongTestExample     | Verylongtestexample    |
+| upper_kebab_case | VeryLongTestExample     | Verylongtestexample    |
+| camel_case       | veryLongTestExample     | Verylongtestexample    |
+| lower_camel_case | veryLongTestExample     | verylongtestexample    |
+| lower_snake_case | veryLongTestExample     | Verylongtestexample    |
+| upper_snake_case | veryLongTestExample     | Verylongtestexample    |
+| kebab_case       | veryLongTestExample     | Verylongtestexample    |
+| upper_kebab_case | veryLongTestExample     | Verylongtestexample    |
+
+
+### Examples with custom separator [;]
+| Mode             | Input                  | Output                 |
+|------------------|------------------------|------------------------|
+| camel_case       | very;long;test;example | VeryLongTestExample    |
+| lower_camel_case | very;long;test;example | veryLongTestExample    |
+| lower_snake_case | very;long;test;example | very_long_test_example |
+| upper_snake_case | very;long;test;example | Very_Long_Test_Example |
+| kebab_case       | very;long;test;example | very-long-test-example |
+| upper_kebab_case | very;long;test;example | Very-Long-Test-Example |
+| camel_case       | Very;Long;Test;Example | VeryLongTestExample    |
+| lower_camel_case | Very;Long;Test;Example | veryLongTestExample   
+
+
 
 # Thank you
 
