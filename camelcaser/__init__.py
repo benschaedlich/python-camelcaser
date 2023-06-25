@@ -34,7 +34,7 @@ def detect_real_words(word_list):
     return real_words
 
 
-def has_seperator(string):
+def has_separator(string):
     pattern = r'[A-Z_-]'
     matches = re.findall(pattern, string)
     if matches:
@@ -80,7 +80,7 @@ def format_string(words_list, mode):
 
 def make_notation(string, max_iteration=30, mode="camel_case", separator=None):
     if not separator:
-        separator = has_seperator(string)
+        separator = has_separator(string)
 
     if separator:
         if separator.isalpha():
